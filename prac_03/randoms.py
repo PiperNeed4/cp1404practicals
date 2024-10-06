@@ -1,4 +1,5 @@
 import random
+
 # line 1: The number seen was 20, the minimum was 5, the maximum was 20
 # line 2: The number seen was 5, the minimum was 3, the maximum was 10,
 # it could not have produced a 4 as it can only generate increments of 2
