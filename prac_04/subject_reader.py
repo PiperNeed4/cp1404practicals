@@ -11,6 +11,7 @@ def main():
     print(data)
     display_subjects(data)
 
+
 def load_data():
     """Read data from file formatted like: subject,lecturer,number of students."""
     subjects = []
@@ -28,9 +29,11 @@ def load_data():
     input_file.close()
     return subjects
 
+
 def display_subjects(subjects):
     """Display subject code and basic information."""
     for subject in subjects:
         print("{} is taught by {:12} and has {:3} students".format(*subject))
+
 
 main()
