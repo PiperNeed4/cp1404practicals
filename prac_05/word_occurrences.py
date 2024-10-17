@@ -1,6 +1,6 @@
 """
-20 minutes
-14 minutes
+Estimate 20 minutes
+Actual 14 minutes
 """
 word_to_occurrences = {}
 text = input("Enter text: ")
