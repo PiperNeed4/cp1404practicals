@@ -1,3 +1,6 @@
+from fileinput import close
+
+from prac_03.capitalist_conrad import out_file
 from prac_07.guitar import Guitar
 
 
@@ -8,7 +11,17 @@ def main():
         parts = line.strip().split(',')
         # guitars.append(parts)
         guitars.append(Guitar(parts[0], parts[1], parts[2]))
+    name = input("Name: ")
+    while name != "":
+        year = int(input("Year: "))
+        cost = float(input("Cost: $"))
+        guitars.append(Guitar(name, year, cost))
+        name = input("Name: ")
     display_guitars(guitars)
+    in_file.close()
+    out_file = open("guitars.csv", 'w')
+    for guitar in guitars:
+        print(guitar, sep="", file=out_file)
 
 
 def display_guitars(guitars):
