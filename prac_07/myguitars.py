@@ -5,6 +5,7 @@ from prac_07.guitar import Guitar
 
 
 def main():
+    """Process information with Guitar objects and display it to the user."""
     in_file = open("guitars.csv", 'r')
     guitars = []
     for line in in_file:
@@ -25,6 +26,7 @@ def main():
 
 
 def display_guitars(guitars):
+    """Display a sorted list of guitars to the user."""
     guitars.sort()
     for i, guitar in enumerate(guitars, 1):
         if guitar.is_vintage():
