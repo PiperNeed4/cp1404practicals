@@ -22,22 +22,22 @@ def main():
     choice = input(MENU).upper()
     while choice != "Q":
         if choice == "L":
-            load_projects(projects)
+            load_project(projects)
             choice = input(MENU).upper()
         elif choice == "S":
-            save_projects(projects)
+            save_project(projects)
             choice = input(MENU).upper()
         elif choice == "D":
-            display_projects(projects)
+            display_project(projects)
             choice = input(MENU).upper()
         elif choice == "F":
-            filter_projects(projects)
+            filter_project(projects)
             choice = input(MENU).upper()
         elif choice == "A":
             add_project(projects)
             choice = input(MENU).upper()
         elif choice == "U":
-            update_projects(projects)
+            update_project(projects)
             choice = input(MENU).upper()
         else:
             print("Invalid input")
@@ -51,7 +51,7 @@ def main():
     print("Thank you for using custom-built project management software.")
 
 
-def load_projects(projects):
+def load_project(projects):
     filename = input("Enter file name: ")
     in_file = open(filename, 'r', encoding="utf-8-sig")
     in_file.readline()
@@ -60,7 +60,7 @@ def load_projects(projects):
         projects.append(Project(parts[0], parts[1], parts[2], parts[3], parts[4]))
 
 
-def save_projects(projects):
+def save_project(projects):
     filename = input("Enter file name: ")
     out_file = open(filename, 'w')
     for project in projects:
@@ -77,7 +77,7 @@ def add_project(projects):
     projects.append(Project(name, start_date, priority, cost_estimate, completion_percentage))
 
 
-def display_projects(projects):
+def display_project(projects):
     print("test")
     projects.sort()
     print("Incomplete projects:")
@@ -91,7 +91,8 @@ def display_projects(projects):
             print(f"{project.name}, start: {project.start_date}, priority: {project.priority}, "
                   f"estimate: {project.cost_estimate}, completion: {project.completion_percentage}%")
 
-def filter_projects(projects):
+
+def filter_project(projects):
     filter_date = input("Show projects that start after date (dd/mm/yy)")
     converted_date = datetime.datetime.strptime(filter_date, "%d/%m/%Y").date()
     for i, project in enumerate(projects, 1):
@@ -99,7 +100,16 @@ def filter_projects(projects):
             print(f"{project.name}, start: {project.start_date}, priority: {project.priority}, "
                   f"estimate: {project.cost_estimate}, completion: {project.completion_percentage}%")
 
-# def update_projects(projects):
-#     pass
+
+def update_project(projects):
+    for i, project in enumerate(projects, 1):
+        print(f"{i - 1} {project.name}, start: {project.start_date}, priority: {project.priority}, "
+              f"estimate: {project.cost_estimate}, completion: {project.completion_percentage}")
+    project_choice = int(input("Project choice: "))
+    for projects[project_choice] in projects:
+        print(f"{project.name}, start: {project.start_date}, priority: {project.priority}, "
+              f"estimate: {project.cost_estimate}, completion: {project.completion_percentage}")
+    new_percentage = int(input("New percentage: "))
+
 
 main()
