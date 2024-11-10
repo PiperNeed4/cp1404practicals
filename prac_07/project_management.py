@@ -20,7 +20,7 @@ def main():
     choice = input(MENU).upper()
     while choice != "Q":
         if choice == "L":
-            pass
+            load_objects()
         elif choice == "S":
             pass
         elif choice == "D":
@@ -34,6 +34,15 @@ def main():
         else:
             print("Invalid input")
             choice = input(MENU).upper()
+
+def load_objects():
+    filename = input("Enter file name: ")
+    in_file = open(filename, 'r', encoding="utf-8-sig")
+    in_file.readline()
+    for line in in_file:
+        parts = line.strip().split('  ')
+        print(parts)
+        # projects.append(Project(parts[0], parts[1], parts[2], parts[3], parts[4]))
 
 def display_projects():
     pass
