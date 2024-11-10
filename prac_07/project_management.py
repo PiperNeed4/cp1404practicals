@@ -4,6 +4,7 @@ Actual:
 current: 47
 """
 from prac_07.project import Project
+import datetime
 
 MENU = ("- (L)oad projects\n- (S)ave projects\n- (D)isplay projects\n- (F)ilter projects by date\n- (A)dd new project\n"
         "- (U)pdate project\n- (Q)uit\n >>> ")
@@ -30,15 +31,24 @@ def main():
             display_projects(projects)
             choice = input(MENU).upper()
         elif choice == "F":
-            pass
+            filter_projects(projects)
+            choice = input(MENU).upper()
         elif choice == "A":
             add_project(projects)
             choice = input(MENU).upper()
         elif choice == "U":
-            pass
+            update_projects(projects)
+            choice = input(MENU).upper()
         else:
             print("Invalid input")
             choice = input(MENU).upper()
+    save_choice = input("Would you like to save to projects.txt? ").upper()
+    if save_choice == "Y":
+        filename = input("Enter file name: ")
+        out_file = open(filename, 'w')
+        for project in projects:
+            print(project, sep="", file=out_file)
+    print("Thank you for using custom-built project management software.")
 
 
 def load_projects(projects):
@@ -81,6 +91,15 @@ def display_projects(projects):
             print(f"{project.name}, start: {project.start_date}, priority: {project.priority}, "
                   f"estimate: {project.cost_estimate}, completion: {project.completion_percentage}%")
 
+def filter_projects(projects):
+    filter_date = input("Show projects that start after date (dd/mm/yy)")
+    converted_date = datetime.datetime.strptime(filter_date, "%d/%m/%Y").date()
+    for i, project in enumerate(projects, 1):
+        if project.start_date > converted_date:
+            print(f"{project.name}, start: {project.start_date}, priority: {project.priority}, "
+                  f"estimate: {project.cost_estimate}, completion: {project.completion_percentage}%")
 
+# def update_projects(projects):
+#     pass
 
 main()
