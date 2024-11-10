@@ -21,6 +21,7 @@ def main():
     while choice != "Q":
         if choice == "L":
             load_objects()
+            choice = input(MENU).upper()
         elif choice == "S":
             pass
         elif choice == "D":
@@ -28,7 +29,8 @@ def main():
         elif choice == "F":
             pass
         elif choice == "A":
-            pass
+            add_project()
+            choice = input(MENU).upper()
         elif choice == "U":
             pass
         else:
@@ -43,6 +45,20 @@ def load_objects():
         parts = line.strip().split('  ')
         print(parts)
         # projects.append(Project(parts[0], parts[1], parts[2], parts[3], parts[4]))
+
+# def save_objects():
+
+
+
+def add_project():
+    print("Let's add a new project")
+    name = input("Name: ")
+    start_date = input("Start date: ")
+    priority = input("Priority (dd/mm/yy): ")
+    cost_estimate = input("Cost estimate: $")
+    completion_percentage = input("Percent complete: ")
+    # projects.append(Project(name, start_date, priority, cost_estimate, completion_percentage))
+
 
 def display_projects():
     pass
