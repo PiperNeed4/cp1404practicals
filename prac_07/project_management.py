@@ -68,7 +68,19 @@ def add_project(projects):
 
 
 def display_projects(projects):
-    print(projects)
+    print("test")
+    projects.sort()
+    print("Incomplete projects:")
+    for i, project in enumerate(projects, 1):
+        if not project.is_complete():
+            print(f"{project.name}, start: {project.start_date}, priority: {project.priority}, "
+                  f"estimate: {project.cost_estimate}, completion: {project.completion_percentage}%")
+    print("Complete projects:")
+    for i, project in enumerate(projects, 1):
+        if project.is_complete():
+            print(f"{project.name}, start: {project.start_date}, priority: {project.priority}, "
+                  f"estimate: {project.cost_estimate}, completion: {project.completion_percentage}%")
+
 
 
 main()
