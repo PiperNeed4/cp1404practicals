@@ -14,4 +14,5 @@ class UnreliableCar(Car):
             distance_driven = super().drive(distance)
             return distance_driven
         else:
-            return 0
+            distance_driven = 0
+            return distance_driven
