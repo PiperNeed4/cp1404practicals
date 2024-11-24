@@ -2,9 +2,10 @@ from musician import Musician
 
 
 class Band:
+    """Represent a band object."""
 
     def __init__(self, name):
-        """Represent a band object."""
+        """Initialize a band object."""
         self.name = name
         self.musicians = []
 
