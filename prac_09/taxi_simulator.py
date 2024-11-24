@@ -1,5 +1,3 @@
-from inspect import isclass
-
 from taxi import Taxi
 from silver_service_taxi import SilverServiceTaxi
 
@@ -7,6 +5,7 @@ MENU = "q)uit, c)hoose taxi, d)rive\n>>> "
 
 
 def main():
+    """Present interactable taxi options to the user."""
     current_taxi = None
     taxis = [Taxi("Prius", 100), SilverServiceTaxi("Limo", 100, 2), SilverServiceTaxi("Hummer", 200, 4)]
     bill_to_date = 0
@@ -35,15 +34,15 @@ def main():
 
 
 def choose_taxi(taxis):
+    """Return taxi of the user's choice."""
     print("Taxis available: ")
     for i, taxi in enumerate(taxis):
-            print(f"{i} - {taxi.__str__()}")
+        print(f"{i} - {taxi.__str__()}")
     taxi_choice = int(input("Choose taxi: "))
     while taxi_choice < 0 or taxi_choice > len(taxis) - 1:
         print("Invalid taxi choice")
         taxi_choice = int(input("Choose taxi: "))
     return taxis[taxi_choice]
-
 
 
 main()
