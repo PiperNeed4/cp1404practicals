@@ -1,20 +1,22 @@
 from musician import Musician
 
-class Band():
+
+class Band:
 
     def __init__(self, name):
+        """Represent a band object."""
         self.name = name
         self.musicians = []
 
     def __str__(self):
-        return f"{self.name}"
+        """Return a string representation of the band object."""
+        return f"{self.name} {[musician.__str__() for musician in self.musicians]}"
 
     def add(self, musician):
+        """Add a musician to the musicians list."""
         self.musicians.append(musician)
 
-
-    # def play(self):
-    #     for musician in self.musicians:
-    #         if not musician:
-    #             return f"{musician.name} needs an instrument!"
-    #         return f"{musician.name} is playing: {musician.instruments[0]}"
+    def play(self):
+        """Lists musicians and their instruments."""
+        for musician in self.musicians:
+            print(musician.play())
