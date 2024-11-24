@@ -1,16 +1,17 @@
 from prac_09.car import Car
-import random
+from random import randint
 
 
 class UnreliableCar(Car):
-
+    """Specialized car class with reliability."""
     def __init__(self, name, fuel, reliability):
-        self.name = name
-        self.fuel = fuel
+        """Initialise an unreliable car object."""
+        super().__init__(name, fuel)
         self.reliability = reliability
 
     def drive(self, distance):
-        if self.reliability >= random.randint:
+        """Drive only if reliability is greater or equal to a random integer between 1 and 100."""
+        if self.reliability >= randint(1, 100):
             distance_driven = super().drive(distance)
             return distance_driven
         else:
